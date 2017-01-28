@@ -1,3 +1,9 @@
+:: If you are worried that this program steals your password, learn how to read code :p
+
+:: TODO
+:: Option to encrypt passwords on save
+:: Other shit
+
 :load
 @echo off & setlocal enabledelayedexpansion & mode con:cols=60 lines=20
 
