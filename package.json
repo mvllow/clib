@@ -1,0 +1,24 @@
+{
+  "name": "clib",
+  "version": "0.3.2",
+  "description": "Password Sh*t",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "install-app-deps",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "author": "mellow",
+  "license": "ISC",
+  "build": {
+    "appId": "com.mellowdev.clib"
+  },
+  "devDependencies": {
+    "electron": "^1.4.15",
+    "electron-builder": "^12.3.1"
+  },
+  "dependencies": {
+    "electron-json-storage": "^3.0.0"
+  }
+}
