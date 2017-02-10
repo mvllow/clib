@@ -14,3 +14,5 @@ Quickly log into League of Legends by saving your password with Clib. Your passw
 * Lock with pin to unlock later without losing saved passwords
 * Encrypt passwords on save
 * Add Mac/Linux support (Clib has been tested on macOS but LoL path is unavailable as of this version)
+
+<img src='https://dl.dropboxusercontent.com/u/57594406/clib/images/screenshot.png'>
