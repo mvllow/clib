@@ -1,10 +1,11 @@
 {
-  "name": "clib",
-  "version": "0.3.2",
+  "name": "Clib",
+  "version": "0.3.3",
   "description": "Password Sh*t",
   "main": "index.js",
   "scripts": {
     "start": "electron .",
+    "rebuild": "npm rebuild --runtime=electron --target=1.4.15 --disturl=https://atom.io/download/atom-shell --abi=48",
     "postinstall": "install-app-deps",
     "pack": "build --dir",
     "dist": "build"
@@ -19,6 +20,7 @@
     "electron-builder": "^12.3.1"
   },
   "dependencies": {
-    "electron-json-storage": "^3.0.0"
+    "electron-json-storage": "^3.0.0",
+    "robotjs": "^0.4.5"
   }
 }
