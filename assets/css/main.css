@@ -17,19 +17,22 @@ a {
   border: none;
 }
 
-.about {
-  margin-top: 32px;
-  font-size: 11px;
-  text-align: center;
-}
-
-.about .avatar {
+.avatar {
   width: 48px;
   height: 48px;
   background: rgba(0,0,0,0.1);
   border: 2px solid rgba(0,0,0,0.1);
   border-radius: 50%;
 }
+
+.about {
+  margin-top: 32px;
+  font-size: 11px;
+}
+
+.left { float: left; }
+.right { float: right; }
+.center { text-align: center; }
 
 .toolbar-footer {
   width: 100%;
