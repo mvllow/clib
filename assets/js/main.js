@@ -1,18 +1,25 @@
 $(document).ready(function () {
     const {app, clipboard, remote, shell} = require('electron')
     const storage = require('electron-json-storage')
+    const robot = require('robotjs')
     const path = 'C:\\Riot Games\\League of Legends\\LeagueClient.exe'
 
-    var window = remote.getCurrentWindow();
-    var password
+    var window = remote.getCurrentWindow()
+    var password = ''
+    var flags = false
 
-    storage.getMany(['locked', 'password'], (e, d) => {
+    storage.getMany(['locked', 'password', 'flags'], (e, d) => {
         if (e) throw e
 
         if (d.locked.obj === true) lock()
         else unlock()
 
         if (d.password.obj) $('#password').val(d.password.obj)
+
+        if (d.flags.obj === true) flags = true
+        else flags = false
+
+        getFlags()
     })
 
     $('#reset').click((e) => {
@@ -21,12 +28,20 @@ $(document).ready(function () {
         })
 
         unlock()
+
         $('#password').val('')
-        clipboard.writeText('')
+        clipboard.clear()
     })
 
     $('#lock').click((e) => {
         lock()
+    })
+
+    $('#flags').click((e) => {
+        if (flags) flags = false
+        else flags = true
+
+        getFlags()
     })
 
     $('#passwordToggle').click((e) => {
@@ -40,22 +55,46 @@ $(document).ready(function () {
     })
 
     $('#launch').click((e) => {
+            var opened = shell.openItem(path)
+            if (!opened) alert('League of Legends cannot be found. Please install to the default location. Custom paths will be enabled in future updates.')
+
             password = setConfig('password', $('#password').val())
 
             clipboard.writeText(password)
 
-            shell.openItem(path)
-
-            setTimeout(function() {
-                clipboard.writeText('')
-                window.close();
-            }, 25000);
+            if (flags) {
+                setTimeout(function() {
+                    robot.moveMouse(1400, 408)
+                    robot.mouseClick()
+                    robot.typeString(password)
+                    robot.keyTap('enter')
+                    clipboard.clear()
+                    window.close()
+                }, 10000);
+            } else {
+                setTimeout(function() {
+                    clipboard.clear()
+                    window.close()
+                }, 25000);
+            }
     })
 
     function setConfig(k, v) {
         storage.set(k, { obj: v })
 
         return v
+    }
+
+    function getFlags() {
+        if (flags) {
+            setConfig('flags', true)
+            $('#flags').addClass('active')
+            $('#flags').text('Flags Enabled')
+        } else {
+            setConfig('flags', false)
+            $('#flags').removeClass('active')
+            $('#flags').text('Flags Disabled')
+        }
     }
 
     function lock() {
@@ -74,75 +113,4 @@ $(document).ready(function () {
         $('#password').attr('type', 'password')
         $('#passwordToggle').removeClass('active')
     }
-
-    // var hPassword = document.getElementById('password'),
-    //     hPasswordIcon = document.getElementById('passwordIcon'),
-    //     hPasswordToggle = document.getElementById('passwordToggle'),
-    //     hLock = document.getElementById('lock')
-    //
-    // var path = 'C:\\Riot Games\\League of Legends\\LeagueClient.exe'
-    //
-    // var isLocked = false
-    //
-    // storage.getMany(['locked', 'password'], (error, data) => {
-    //     if (error) throw error
-    //
-    //     if (data.locked.val === true) isLocked = true
-    //     else isLocked = false
-    //
-    //     if (data.password.val) hPassword.value = data.password.val
-    // })
-    //
-    // function setConfig(k, v) {
-    //     storage.set(k, { val: v })
-    //
-    //     return v
-    // }
-    //
-    // function lock() {
-    //     isLocked = setConfig('locked', true)
-    //
-    //     hPassword.type = 'password'
-    //     hPasswordIcon.innerHTML = 'visibility'
-    //     hPasswordToggle.disabled = true
-    // }
-    //
-    // function showPassword() {
-    //     if (isLocked == false) {
-    //         if (hPassword.type == 'password') {
-    //             hPassword.type = 'text'
-    //             hPasswordIcon.innerHTML = 'visibility_off'
-    //         } else {
-    //             hPassword.type = 'password'
-    //             hPasswordIcon.innerHTML = 'visibility'
-    //         }
-    //     } else {
-    //         alert('Cannot show password while program is locked. Please reset to unlock program.')
-    //     }
-    // }
-    //
-    // function launch() {
-    //     setConfig('password', hPassword.value)
-    //
-    //     clipboard.writeText(hPassword.value)
-    //
-    //     // shell.openItem(path)
-    //
-    //     setTimeout(function() {
-    //         clipboard.writeText('')
-    //     }, 25000);
-    // }
-    //
-    // function reset() {
-    //     storage.clear((error) => {
-    //         if (error) throw error;
-    //     })
-    //
-    //     isLocked = false
-    //     hPassword.value = ''
-    //     hPassword.type = 'password'
-    //     hPasswordIcon.innerHTML = 'visibility'
-    //     hPasswordToggle.disabled = false
-    // }
-
 });
