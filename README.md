@@ -1,18 +1,22 @@
-<img src='https://github.com/sociallymellow/clib/raw/master/images/icon.png' width=60>
+### Clib
 
-## About
-Quickly log into League of Legends by saving your password with Clib. Your password is temporarily copied to your clipboard after pressing Launch. Simply press Ctrl+V to paste your password into League. After 20 seconds, your clipboard is cleared and Clib will automatically close.
+League of Legends Login Helper
 
-## Features
-* Simple installer with shortcut creator
-* Password is copied to clipboard to `Ctrl+V` into LoL
-* Clib automatically closes & your clipboard is cleared after 20 seconds
+### About
 
-## Upcoming
-* Ability to change default program and path (not exclusive to League of Legends)
-* Multiple profiles to easily switch between programs and passwords
-* Lock with pin to unlock later without losing saved passwords
-* Encrypt passwords on save
-* Add Mac/Linux support (Clib has been tested on macOS but LoL path is unavailable as of this version)
+Create a seamless login experience when League is launched and your password is copied to the clipboard to paste via `Ctrl+V`. Clib then closes after 20 seconds and your clipboard clears.
+
+Clib beta release now has a more advanced system that includes automatically entering your password into the League client and completes the process for you.
+
+### Download
+
+https://github.com/sociallymellow/clib/releases/tag/v0.3.2
+
+https://github.com/sociallymellow/clib/releases/tag/v0.3.3-beta
+
+### Disclaimer
+> Neither Clib or mellow are associated with League of Legends or Riot Games. No information is collected by Clib. Any data entered into Clib is only saved on the user's local device.
+
+> Clib does NOT know your username. If using the auto-paste feature (beta only) it is recommended to use a password unique for League in case it is accidentally pasted somewhere else! Again, this is a beta feature!
 
 <img src='https://dl.dropboxusercontent.com/u/57594406/clib/images/screenshot.png'>
