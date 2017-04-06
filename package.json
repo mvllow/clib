@@ -1,6 +1,6 @@
 {
   "name": "Clib",
-  "version": "0.3.3",
+  "version": "0.4.1",
   "description": "Password Sh*t",
   "main": "index.js",
   "scripts": {
