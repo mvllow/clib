@@ -2,47 +2,59 @@
 
 <html>
     <head>
-        <title>Clib Beta</title>
+        <title>Clib</title>
         <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-        <link rel='stylesheet' href='./assets/css/photon.min.css'>
+        <link rel='stylesheet' href='./assets/css/material.min.css'>
         <link rel='stylesheet' href='./assets/css/main.css'>
-        <script src='./assets/js/jquery-3.1.1.min.js'></script>
-        <script>window.$ = window.jQuery = require('./assets/js/jquery-3.1.1.min.js');</script>
-        <script src='./assets/js/main.js'></script>
+        <script defer src='./assets/js/material.min.js'></script>
+        <script defer src='./assets/js/main.js'></script>
     </head>
 
     <body>
-        <header class='toolbar toolbar-header'>
-            <h1 class='title'>Clib v0.3.3</h1>
-        </header>
+        <div class='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+            <header class='mdl-layout__header'>
+                <div class='mdl-layout__header-row'>
+                    <span class='mdl-layout-title'>Clib</span>
 
-        <main>
-            <div class='form-group'>
-                <label>Program</label>
-                <input type='text' class='form-control' placeholder='Program' value='League of Legends (Windows)' id='program' disabled>
-            </div>
+                    <div class='mdl-layout-spacer'></div>
 
-            <div class='form-group'>
-                <label>Password</label>
-                <input id='password' type='password' class='form-control' placeholder='Password'>
-            </div>
+                    <nav class='mdl-navigation'>
+                        <a id='app-hide' class='mdl-button mdl-js-button mdl-button--icon'>
+                            <i class='material-icons'>remove</i>
+                        </a>
 
-            <div class='about center'>
-                <a href='https://twitter.com/sociallymellow' target='blank'><img class='avatar' src='images/avi.png' alt=''></a>
-                <br><a id='flags'></a>
-            </div>
-        </main>
-
-        <footer class='toolbar toolbar-footer'>
-            <div class='toolbar-actions'>
-                <div class='btn-group'>
-                    <button id='reset' class='btn btn-default'><i class='icon icon-text material-icons'>delete</i>Reset</button>
-                    <button id='lock' class='btn btn-default'><i class='icon material-icons'>lock</i></button>
-                    <button id='passwordToggle' class='btn btn-default'><i id='passwordIcon' class='icon material-icons'>visibility</i></button>
+                        <a id='app-close' class='mdl-button mdl-js-button mdl-button--icon'>
+                            <i class='material-icons'>close</i>
+                        </a>
+                    </nav>
                 </div>
 
-                <button id='launch' class='btn btn-primary pull-right'>Launch</button>
-            </div>
-        </footer>
+                <div class='level alert mdl-color--blue'>
+                    <span class='level-item'><i class='material-icons icon-left'>error</i> Only use with unique passwords</span>
+                </div>
+            </header>
+
+            <main class='mdl-layout__content'>
+                <div class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
+                    <input id='f-default-app'class='mdl-textfield__input' type='text' value='League Client Update (Windows)' disabled>
+                    <label for='f-default-app' class='mdl-textfield__label'>Default application</label>
+                </div>
+
+                <div id='f-password-wrapper' class='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
+                    <input id='f-password' class='mdl-textfield__input' type='password'>
+                    <label for='f-password' class='mdl-textfield__label'>Password</label>
+                </div>
+
+                <div class='actions'>
+                    <button id='b-launch' class='mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored mdl-color--blue-grey-700'>
+                        <i class='material-icons'>content_copy</i>
+                    </button>
+
+                    <button id='b-launch-auto' class='pull-right mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'>
+                        Login
+                    </button>
+                </div>
+            </main>
+        </div>
     </body>
 </html>
