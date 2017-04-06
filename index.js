@@ -1,11 +1,27 @@
 const {app, BrowserWindow, clipboard} = require('electron')
 
 app.on('ready', () => {
-    let win = new BrowserWindow({width: 350, height: 400})
-
-    win.on('closed', () => {
-        win = null
+    let mainWindow = new BrowserWindow({
+        width:       350,
+        height:      450,
+        frame:       false,
+        resizable:   false,
+        maximizable: false,
+        show:        false,
+        icon:        './build/icon.ico'
     })
 
-    win.loadURL(`file://${__dirname}/index.html`)
+    mainWindow.once('ready-to-show', () => {
+        mainWindow.show()
+    })
+
+    mainWindow.on('closed', () => {
+        mainWindow = null
+    })
+
+    app.on('window-all-closed', () => {
+        app.quit()
+    })
+
+    mainWindow.loadURL(`file://${__dirname}/index.html`)
 })
