@@ -1,22 +1,24 @@
 ### Clib
 
-League of Legends Login Helper
+League of Legends login helper
 
 ### About
 
-Create a seamless login experience when League is launched and your password is copied to the clipboard to paste via `Ctrl+V`. Clib then closes after 20 seconds and your clipboard clears.
+Clib has an automatic and manual way of logging in, both launching the League Client Update in the process and handling how Clib should close.
 
-Clib beta release now has a more advanced system that includes automatically entering your password into the League client and completes the process for you.
+#### Automatic
+
+Your password is entered directly into League, avoiding saving your password to the clipboard. When using this method, it is recommended to use a unique password in case it is accidentally pasted somewhere else.
+
+#### Manual
+
+Nothing fancy here, just your password being copied to the clipboard where you can then paste it into League via `Ctrl+V`. This method is arguably more secure, especially considering Clib will clear your clipboard after 25 seconds.
 
 ### Download
 
-https://github.com/sociallymellow/clib/releases/tag/v0.3.2
+https://github.com/sociallymellow/clib/releases/tag/v0.4.1
 
-https://github.com/sociallymellow/clib/releases/tag/v0.3.3-beta
-
-<img src='https://dl.dropboxusercontent.com/u/57594406/clib/images/screenshot.png'>
+<img src='https://github.com/sociallymellow/clib/blob/master/images/clib.0.4.1.png?raw=true'>
 
 ### Disclaimer
-> Neither Clib or mellow are associated with League of Legends or Riot Games. No information is collected by Clib. Any data entered into Clib is only saved on the user's local device.
-
-> Clib does NOT know your username. If using the auto-paste feature (beta only) it is recommended to use a password unique for League in case it is accidentally pasted somewhere else! Again, this is a beta feature!
+> Neither Clib or mellow are associated with League of Legends or Riot Games. No information is collected by Clib. Any data entered into Clib is only saved on the user's local device. No information is gathered outside of this application, therefor Clib does not know your username.
