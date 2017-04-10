@@ -2,7 +2,13 @@
 
 const {app, clipboard, remote, screen, shell} = require('electron')
 const storage = require('electron-json-storage')
-const robot   = require('robotjs')
+
+try {
+    const robot   = require('robotjs')
+    var hasRobot      = true
+} catch(err) {
+    var hasRobot      = false
+}
 
 let {width, height} = screen.getPrimaryDisplay().workAreaSize
 
@@ -40,7 +46,7 @@ function launch(auto = false) {
 
     password = setConfig('password', fPassword.value)
 
-    if (auto) {
+    if (auto && hasRobot) {
         appWindow.minimize()
 
         setTimeout(function() {
@@ -51,6 +57,8 @@ function launch(auto = false) {
             robot.typeString(password)
             appWindow.close()
         }, 10000);
+    } else if (auto && !hasRobot) {
+        alert('Automatic login is disabled on this platform.')
     } else {
         clipboard.writeText(password)
         appWindow.hide()
