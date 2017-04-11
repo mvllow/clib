@@ -19,9 +19,9 @@ app.on('ready', () => {
         mainWindow = null
     })
 
-    app.on('window-all-closed', () => {
-        app.quit()
-    })
-
     mainWindow.loadURL(`file://${__dirname}/index.html`)
+})
+
+app.on('window-all-closed', () => {
+    app.quit()
 })
