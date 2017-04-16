@@ -50,7 +50,6 @@ function launch(auto = false) {
         appWindow.minimize()
 
         setTimeout(function() {
-            shell.openItem(defaultAppPath) // helps prevent loss of focus
             robot.moveMouse(width/2, height/2)
             robot.mouseClick()
             robot.keyTap('tab')
